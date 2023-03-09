@@ -13,7 +13,7 @@ const { frontmatter, ...rest } = Astro.props;
   </head>
   <body class="flex flex-col min-h-[100vh]">
     <Header />
-    <article class="p-4 flex-1">
+    <article class="flex-1 container mx-auto sm:max-w-full md:max-w-[1280px]">
       <slot />
     </article>
 
