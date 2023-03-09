@@ -1,15 +1,93 @@
 ---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { YoutubeResponseSchema } from "../schema/yt";
+const YOUTUBE_API_KEY = import.meta.env.YOUTUBE_API_KEY;
+
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=120, s-maxage=120, stale-while-revalidate=120"
+);
+
+// const response = await fetch(
+//   `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=UCB9JcmYVd-oHcZyCNraCiug&part=snippet,id&order=date&maxResults=40`
+// );
+// const data = await response.json();
+
+// const videos = YoutubeResponseSchema.parse(data).items;
+
+const upcoming = [];
+// videos.filter((video) => {
+//   return (
+//     video.snippet.liveBroadcastContent === "upcoming" &&
+//     video.snippet.title.toLocaleLowerCase().includes("deep drinks podcast")
+//   );
+// });
+
+const previous = [];
+//  videos.filter((video) => {
+//   return (
+//     video.snippet.liveBroadcastContent === "none" &&
+//     video.snippet.title.toLocaleLowerCase().includes("deep drinks podcast")
+//   );
+// });
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  frontmatter={{
+    title: "Deep Drinks Podcast",
+  }}
+>
+  <div class="p-4">
+    <h2 class="text-2xl mb-4">Upcoming</h2>
+    {
+      upcoming.map((video) => {
+        const snip = video.snippet;
+        return (
+          <article class="flex mb-4 pb-4 border-b border-gray-500">
+            <img class="w-[320px]" src={`${snip.thumbnails.medium.url}`} />
+
+            <h3 class="text-3xl ml-4 text-slate-600">{snip.title}</h3>
+
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+              class="block w-[320px]"
+            >
+              Notify me
+            </a>
+          </article>
+        );
+      })
+    }
+  </div>
+
+  <div class="p-4">
+    <h2 class="text-2xl mb-4">Previus episodes</h2>
+    <div class="grid grid-cols-4 gap-4">
+      {
+        previous.map((video) => {
+          const snip = video.snippet;
+          return (
+            <article>
+              <img class="w-[320px]" src={`${snip.thumbnails.medium.url}`} />
+
+              <h3 class="text-1xl  text-slate-600">{snip.title}</h3>
+
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                class="block w-[320px]"
+              >
+                Notify me
+              </a>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</BaseLayout>
