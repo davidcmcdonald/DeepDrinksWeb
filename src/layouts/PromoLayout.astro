@@ -1,0 +1,19 @@
+---
+import { SubScribe } from "../components/Subscribe";
+import BaseLayout from "./BaseLayout.astro";
+
+const { frontmatter } = Astro.props;
+
+const url =
+  "https://gmail.us9.list-manage.com/subscribe/post?u=4d7c1a52aff41d4a89a0b1e2e&amp;id=ed1216693c&amp;f_id=00e817e1f0";
+---
+
+<BaseLayout frontmatter={frontmatter}>
+  <article class="flex-1 container mx-auto sm:max-w-full md:max-w-[1280px]">
+    <slot />
+  </article>
+
+  <article class="flex-1 container mx-auto sm:max-w-full md:max-w-[1280px]">
+    <SubScribe />
+  </article>
+</BaseLayout>
