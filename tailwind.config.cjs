@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-banner": "url('banner.png')",
+        "hero-banner": "url('banner2.jpg')",
       },
     },
     fontSize: {
