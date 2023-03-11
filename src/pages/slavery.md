@@ -3,7 +3,8 @@ layout: '../layouts/PromoLayout.astro'
 title: 'Slavery panel'
 ---
 
-<h1 class="text-3xl">Slavery panel</h1>
+
+<img src="slavery_panel.jpg" alt="Slavery Panel Banner" class="center">
 
 
 <!-- Begin Mailchimp Signup Form -->
