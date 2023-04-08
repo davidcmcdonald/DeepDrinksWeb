@@ -21,7 +21,7 @@ title: 'Slavery panel'
 	#mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
 </style>
 <div id="mc_embed_signup">
-    <form action="https://gmail.us9.list-manage.com/subscribe/post?u=4d7c1a52aff41d4a89a0b1e2e&amp;id=ed1216693c&amp;v_id=4383&amp;f_id=00e817e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <form action="https://gmail.us9.list-manage.com/subscribe/post?u=4d7c1a52aff41d4a89a0b1e2e&amp;id=ed1216693c&amp;v_id=4399&amp;f_id=00e817e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
         <div id="mc_embed_signup_scroll">
         <h2>Recieve Slavery Panel PDF</h2>
         <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
@@ -48,7 +48,7 @@ title: 'Slavery panel'
         <label>Marketing Permissions</label>
         <p>Join our mailing list to get the inside scoop on upcoming guests, panels and more. (we promise, no spam)</p>
         <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
-		<label class="checkbox subfield" for="gdpr_39651"><input type="checkbox" id="gdpr_39651" name="gdpr[39651]" value="Y" class="av-checkbox gdpr"><span>Yes Please!</span> </label><label class="checkbox subfield" for="gdpr_39663"><input type="checkbox" id="gdpr_39663" name="gdpr[39663]" value="Y" class="av-checkbox gdpr"><span>No Thankyou.</span> </label>
+		<label class="checkbox subfield" for="gdpr_39651"><input type="checkbox" id="gdpr_39651" name="gdpr[39651]" value="Y" class="av-checkbox "><span>Yes Please!</span> </label>
         </fieldset>
         <p>You can unsubscribe at any time by clicking the link in the footer of our emails.</p>
     </div>
@@ -62,7 +62,7 @@ title: 'Slavery panel'
 		<div class="response" id="mce-success-response" style="display:none"></div>
 	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_4d7c1a52aff41d4a89a0b1e2e_ed1216693c" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
     </div>
 </form>
 </div>
