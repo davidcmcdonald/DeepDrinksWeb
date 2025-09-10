@@ -3,7 +3,7 @@ import { SITE } from "@/site.config";
 import Link from "next/link";
 
 export const metadata = {
-  title: "About"
+  title: "About",
 };
 
 export default function About() {
@@ -12,9 +12,9 @@ export default function About() {
       <div className="lg:col-span-2 space-y-6">
         <h1 className="text-3xl font-extrabold">About Deep Drinks</h1>
         <p className="text-white/80">
-          Deep Drinks is a long‑form interview podcast hosted by David McDonald — exploring religion,
-          philosophy, science, and human rights over a favourite drink.
-          Guests range from scholars and historians to content creators and everyday people.
+          Deep Drinks is a long-form interview podcast hosted by David McDonald — exploring religion,
+          philosophy, science, and human rights over a favourite drink. Guests range from scholars and
+          historians to content creators and everyday people.
         </p>
         <p className="text-white/80">
           New episodes are published to a curated YouTube playlist and syndicated to major audio platforms.
@@ -27,10 +27,11 @@ export default function About() {
           <Link className="btn-secondary" href={SITE.socials.linktree} target="_blank">Linktree</Link>
         </div>
       </div>
+
       <div className="card text-center">
         <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border border-white/10">
           <Image
-            src="/images/profile.jpg"
+            src="/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg"
             alt="David McDonald"
             fill
             className="object-cover"
@@ -38,11 +39,9 @@ export default function About() {
           />
         </div>
         <h3 className="mt-4 text-xl font-semibold">David McDonald</h3>
-        <p className="text-white/60 text-sm">
-          Host & Producer
-        </p>
+        <p className="text-white/60 text-sm">Host & Producer</p>
         <p className="text-white/70 text-sm mt-2">
-          (Replace this photo by adding <code>public/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg</code>)
+          (Image file lives at <code>public/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg</code>)
         </p>
       </div>
     </div>
