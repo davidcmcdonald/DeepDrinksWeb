@@ -15,26 +15,25 @@ export default function Analytics() {
   const id = process.env.NEXT_PUBLIC_GA_ID;
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const debug = process.env.NODE_ENV !== "production";
 
-  // Don’t render anything if GA ID isn’t set
   if (!id) return null;
 
-  // Send a page_view on client-side route changes (App Router)
   useEffect(() => {
-    if (!id || typeof window === "undefined" || !window.gtag) return;
+    if (typeof window === "undefined" || !window.gtag) return;
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : "");
     window.gtag("event", "page_view", {
       page_path: url,
       page_location: window.location.href,
       page_title: document.title,
+      ...(debug ? { debug_mode: true } : {}),
     });
-  }, [id, pathname, searchParams]);
+    if (debug) console.debug("[GA] page_view →", url);
+  }, [pathname, searchParams, debug]);
 
   return (
     <>
-      {/* gtag loader */}
       <Script src={`https://www.googletagmanager.com/gtag/js?id=${id}`} strategy="afterInteractive" />
-      {/* gtag init */}
       <Script id="ga-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
@@ -42,7 +41,7 @@ export default function Analytics() {
           gtag('js', new Date());
           gtag('config', '${id}', {
             anonymize_ip: true,
-            send_page_view: true
+            send_page_view: false
           });
         `}
       </Script>
