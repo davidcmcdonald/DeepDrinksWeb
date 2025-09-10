@@ -26,21 +26,23 @@ export default function About() {
             <Link className="btn-secondary" href={SITE.socials.apple} target="_blank">Apple Podcasts</Link>
             <Link className="btn-secondary" href={SITE.socials.linktree} target="_blank">Linktree</Link>
           </div>
+
           <div className="card">
-  <h3 className="text-xl font-semibold mb-2">Support Deep Drinks</h3>
-  <div className="flex flex-wrap gap-3">
-    <TrackLink className="btn-secondary" href={SITE.socials.patreon} target="_blank" event="support_click" params={{ type: "patreon" }}>
-      Patreon
-    </TrackLink>
-    <TrackLink className="btn-secondary" href={SITE.socials.members} target="_blank" event="support_click" params={{ type: "members" }}>
-      Channel Members
-    </TrackLink>
-    <TrackLink className="btn-secondary" href={SITE.socials.merch} target="_blank" event="support_click" params={{ type: "merch" }}>
-      Merch
-    </TrackLink>
-  </div>
-</div>
+            <h3 className="text-xl font-semibold mb-2">Support Deep Drinks</h3>
+            <div className="flex flex-wrap gap-3">
+              <TrackLink className="btn-secondary" href={SITE.socials.patreon} target="_blank" rel="noreferrer" event="support_click" params={{ type: "patreon" }}>
+                Patreon
+              </TrackLink>
+              <TrackLink className="btn-secondary" href={SITE.socials.members} target="_blank" rel="noreferrer" event="support_click" params={{ type: "members" }}>
+                Channel Members
+              </TrackLink>
+              <TrackLink className="btn-secondary" href={SITE.socials.merch} target="_blank" rel="noreferrer" event="support_click" params={{ type: "merch" }}>
+                Merch
+              </TrackLink>
+            </div>
+          </div>
         </div>
+
         <div className="card text-center">
           <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border border-white/10">
             <Image
@@ -62,23 +64,27 @@ export default function About() {
           <div className="card">
             <h3 className="font-semibold mb-2">Interview: My Journey</h3>
             <div className="aspect-video">
-              <iframe className="w-full h-full rounded-xl border border-white/10"
+              <iframe
+                className="w-full h-full rounded-xl border border-white/10"
                 src="https://www.youtube.com/embed/_GkdkDvW_p4"
                 title="About David - Interview 1"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen />
+                allowFullScreen
+              />
             </div>
           </div>
           <div className="card">
             <h3 className="font-semibold mb-2">Why Deep Drinks</h3>
             <div className="aspect-video">
-              <iframe className="w-full h-full rounded-xl border border-white/10"
+              <iframe
+                className="w-full h-full rounded-xl border border-white/10"
                 src="https://www.youtube.com/embed/JQcMJKOzm8o"
                 title="About David - Interview 2"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen />
+                allowFullScreen
+              />
             </div>
           </div>
         </div>

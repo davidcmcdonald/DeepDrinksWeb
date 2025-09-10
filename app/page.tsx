@@ -4,6 +4,7 @@ import { fetchPlaylist } from "@/lib/playlist";
 import VideoCard from "@/components/VideoCard";
 import Subscribe from "@/components/Subscribe";
 import { fetchChannelPlaylists } from "@/lib/channel";
+import TrackLink from "@/components/TrackLink";
 
 export default async function Home() {
   const vids = await fetchPlaylist(SITE.playlistId, { max: 9 });
@@ -18,7 +19,7 @@ export default async function Home() {
             Deep Conversations over Deep Drinks
           </h1>
           <p className="text-white/70 mt-3 max-w-2xl">
-            Religion, philosophy, science & human rights — long‑form chats with scholars, creators and everyday people.
+            Religion, philosophy, science & human rights — long-form chats with scholars, creators and everyday people.
           </p>
           <div className="mt-6 flex gap-3">
             <Link href={SITE.youtubeChannel} target="_blank" className="btn">Watch on YouTube</Link>
@@ -30,16 +31,15 @@ export default async function Home() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Recent episodes</h2>
-          <Link
-  href={`https://www.youtube.com/playlist?list=${SITE.playlistId}`}
-  className="btn-secondary"
-  target="_blank"
-  // 👇 add this
-  onClick={() => { if (typeof window !== "undefined") window.gtag?.("event", "more_episodes_click"); }}
->
-  More episodes →
-</Link>
-
+          <TrackLink
+            href={`https://www.youtube.com/playlist?list=${SITE.playlistId}`}
+            className="btn-secondary"
+            target="_blank"
+            rel="noreferrer"
+            event="more_episodes_click"
+          >
+            More episodes →
+          </TrackLink>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {vids.map(v => <VideoCard key={v.id} v={v} />)}
@@ -51,7 +51,7 @@ export default async function Home() {
           <h2 className="text-2xl font-bold">Other playlists</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {playlists.map(p => (
-              <a key={p.id} href={p.url} target="_blank" className="card hover:bg-white/10 transition">
+              <a key={p.id} href={p.url} target="_blank" rel="noreferrer" className="card hover:bg-white/10 transition">
                 <h3 className="text-lg font-semibold">{p.title}</h3>
                 <p className="text-white/60 text-sm mt-1">View on YouTube</p>
               </a>
