@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import type { Video } from "@/lib/playlist";
 import { format } from "@/lib/utils";
+import { track } from "@/lib/ga";
 
 export default function VideoCard({ v }: { v: Video }) {
   return (
@@ -9,6 +12,7 @@ export default function VideoCard({ v }: { v: Video }) {
       target="_blank"
       rel="noreferrer"
       className="group overflow-hidden rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+      onClick={() => track("video_click", { video_id: v.id, title: v.title, list: "recent_episodes" })}
     >
       <div className="relative aspect-video">
         {v.thumbnail && (
@@ -18,7 +22,6 @@ export default function VideoCard({ v }: { v: Video }) {
             fill
             className="object-cover transition group-hover:scale-[1.03]"
             sizes="(max-width: 768px) 100vw, 33vw"
-            priority={false}
           />
         )}
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/site.config";
+import TrackLink from "@/components/TrackLink";
 
 export const metadata = { title: "About" };
 
@@ -26,13 +27,19 @@ export default function About() {
             <Link className="btn-secondary" href={SITE.socials.linktree} target="_blank">Linktree</Link>
           </div>
           <div className="card">
-            <h3 className="text-xl font-semibold mb-2">Support Deep Drinks</h3>
-            <div className="flex flex-wrap gap-3">
-              <Link className="btn-secondary" href={SITE.socials.patreon} target="_blank">Patreon</Link>
-              <Link className="btn-secondary" href={SITE.socials.members} target="_blank">Channel Members</Link>
-              <Link className="btn-secondary" href={SITE.socials.merch} target="_blank">Merch</Link>
-            </div>
-          </div>
+  <h3 className="text-xl font-semibold mb-2">Support Deep Drinks</h3>
+  <div className="flex flex-wrap gap-3">
+    <TrackLink className="btn-secondary" href={SITE.socials.patreon} target="_blank" event="support_click" params={{ type: "patreon" }}>
+      Patreon
+    </TrackLink>
+    <TrackLink className="btn-secondary" href={SITE.socials.members} target="_blank" event="support_click" params={{ type: "members" }}>
+      Channel Members
+    </TrackLink>
+    <TrackLink className="btn-secondary" href={SITE.socials.merch} target="_blank" event="support_click" params={{ type: "merch" }}>
+      Merch
+    </TrackLink>
+  </div>
+</div>
         </div>
         <div className="card text-center">
           <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border border-white/10">

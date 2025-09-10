@@ -8,7 +8,9 @@ export default function Contact() {
       <h1 className="text-3xl font-extrabold">Contact</h1>
       <div className="card space-y-2">
         <p>For bookings, collaborations, or general enquiries:</p>
-        <p className="text-xl"><a className="underline" href={SITE.socials.email}>david@deepdrinks.com</a></p>
+        <a className="underline" href={SITE.socials.email} onClick={() => { if (typeof window !== "undefined") window.gtag?.("event", "contact_click", { method: "email" }); }}>
+  david@deepdrinks.com
+</a>
       </div>
       <div className="card space-y-2">
         <h2 className="text-xl font-semibold">Support Deep Drinks</h2>

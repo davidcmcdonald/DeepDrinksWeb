@@ -30,7 +30,16 @@ export default async function Home() {
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Recent episodes</h2>
-          <Link href={`https://www.youtube.com/playlist?list=${SITE.playlistId}`} className="btn-secondary" target="_blank">More episodes →</Link>
+          <Link
+  href={`https://www.youtube.com/playlist?list=${SITE.playlistId}`}
+  className="btn-secondary"
+  target="_blank"
+  // 👇 add this
+  onClick={() => { if (typeof window !== "undefined") window.gtag?.("event", "more_episodes_click"); }}
+>
+  More episodes →
+</Link>
+
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {vids.map(v => <VideoCard key={v.id} v={v} />)}
