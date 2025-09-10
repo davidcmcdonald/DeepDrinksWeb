@@ -55,6 +55,7 @@ robots: {
     "max-snippet": -1,
   },
 },
+
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
