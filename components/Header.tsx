@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import Socials from "@/components/Socials";
+import { SITE } from "@/site.config";
 
 export default function Header() {
   return (
@@ -7,10 +10,15 @@ export default function Header() {
         <Link href="/" className="font-extrabold tracking-tight text-xl md:text-2xl">
           Deep<span className="text-white/60">Drinks</span>
         </Link>
-        <nav className="flex gap-3">
-          <Link className="btn-secondary" href="/about">About</Link>
-          <Link className="btn" href="https://www.youtube.com/@DeepDrinks" target="_blank">Subscribe</Link>
-        </nav>
+        <div className="flex items-center gap-4">
+          <Socials className="hidden sm:flex" />
+          <nav className="flex items-center gap-3">
+            <Link className="btn-secondary" href="/about">About</Link>
+            <Link className="btn-secondary" href="/contact">Contact</Link>
+            <Link className="btn" href={SITE.subscribeUrl} target="_blank" rel="noreferrer">Subscribe</Link>
+          </nav>
+          <Image src="/logo.svg" alt="Deep Drinks logo" width={36} height={36} className="hidden md:block" />
+        </div>
       </div>
     </header>
   );

@@ -3,10 +3,11 @@ import { SITE } from "@/site.config";
 import { fetchPlaylist } from "@/lib/playlist";
 import VideoCard from "@/components/VideoCard";
 import Subscribe from "@/components/Subscribe";
+import { fetchChannelPlaylists } from "@/lib/channel";
 
 export default async function Home() {
-  const vids = await fetchPlaylist(SITE.playlistId, { max: 24 });
-  const [featured, ...rest] = vids;
+  const vids = await fetchPlaylist(SITE.playlistId, { max: 9 });
+  const playlists = await fetchChannelPlaylists(SITE.channelHandle, { limit: 6 });
 
   return (
     <div className="space-y-10">
@@ -26,35 +27,32 @@ export default async function Home() {
         </div>
       </section>
 
-      {featured && (
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold">Latest episode</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <iframe
-              className="w-full aspect-video rounded-2xl border border-white/10"
-              src={`https://www.youtube.com/embed/${featured.id}`}
-              title={featured.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-            <div className="card">
-              <h3 className="text-xl font-semibold">{featured.title}</h3>
-              <p className="text-white/70 mt-2 line-clamp-6">{featured.description}</p>
-              <div className="mt-4">
-                <Link href={`/episode/${featured.id}`} className="btn-secondary">Episode page</Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold">Recent episodes</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold">Recent episodes</h2>
+          <Link href={`https://www.youtube.com/playlist?list=${SITE.playlistId}`} className="btn-secondary" target="_blank">More episodes →</Link>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {rest.map(v => <VideoCard key={v.id} v={v} />)}
+          {vids.map(v => <VideoCard key={v.id} v={v} />)}
         </div>
       </section>
+
+      {playlists.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold">Other playlists</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {playlists.map(p => (
+              <a key={p.id} href={p.url} target="_blank" className="card hover:bg-white/10 transition">
+                <h3 className="text-lg font-semibold">{p.title}</h3>
+                <p className="text-white/60 text-sm mt-1">View on YouTube</p>
+              </a>
+            ))}
+          </div>
+          <p className="text-white/60 text-sm">
+            (This section updates automatically — if a playlist is removed from the channel, it disappears here after the next refresh.)
+          </p>
+        </section>
+      )}
 
       <Subscribe />
     </div>
