@@ -1,23 +1,26 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
+# Dependencies
 node_modules/
+.pnp/
+.pnp.*
 
-# logs
+# Next.js
+.next/
+out/
+.vercel/
+.next/cache/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-
-# environment variables
+# Env
 .env
-.env.production
+.env.local
+.env.*.local
 
-# macOS-specific files
+# Misc
 .DS_Store
-
-.vercel
+Thumbs.db

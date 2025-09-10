@@ -1,47 +1,49 @@
-# Astro Starter Kit: Minimal
+# Deep Drinks Podcast — Next.js Site
 
-```
-npm create astro@latest -- --template minimal
-```
+A fast, modern site for **Deep Drinks Podcast**, built with **Next.js 14** (App Router) and **Tailwind CSS**.  
+It auto-updates from a **YouTube playlist** (via RSS, no API key) using **Incremental Static Regeneration**.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## ✨ Features
+- **Auto-updating Episodes:** Pulls the latest videos from a YouTube playlist RSS feed every hour.
+- **Home / Episode / About / Disclaimer** pages.
+- **Episode pages** with YouTube embeds and descriptions.
+- **Beautiful design** with Tailwind and subtle effects.
+- **No secrets required** — works out of the box on Vercel/GitHub.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## 🔧 Quick Start (Local)
+```bash
+npm i
+npm run dev   # http://localhost:3000
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Deploy to Vercel
+1. Push this project to your GitHub as a new repository (e.g. `deepdrinks-site`).
+2. In Vercel, **Import Project** → select your repo → deploy.
+3. (Optional) Set an env var to point at a different playlist:
+   - `NEXT_PUBLIC_PLAYLIST_ID=YOUR_PLAYLIST_ID`
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+> Default playlist is the main "Deep Drinks Podcast" playlist.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🔁 How "auto-update" works
+- The site fetches the **playlist RSS** and caches the result.  
+- With ISR (`revalidate: 3600`), pages are **regenerated in the background** at most once per hour.  
+- To refresh faster, reduce the `revalidate` number in `lib/playlist.ts`.
 
-## 🧞 Commands
+## 🖼️ Add your photo
+Place a square headshot at: `public/images/profile.jpg` (e.g., 1200×1200).  
+It's used on the About page.
 
-All commands are run from the root of the project, from a terminal:
+## 🧰 Customise
+- `site.config.ts` — site title, description, social links, playlist id.
+- `styles/globals.css` — theme & styles.
+- `app/**` — pages.
+- `components/**` — UI components.
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+## 📝 Notes
+- The site uses **fast-xml-parser** to parse the YouTube RSS feed.  
+- Thumbnails use `https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg`.
+- For a custom domain on Vercel, add your DNS and set `metadataBase` in `app/layout.tsx` to your final URL.
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Made for David McDonald / Deep Drinks Podcast.
