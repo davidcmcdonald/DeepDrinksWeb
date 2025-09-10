@@ -1,11 +1,13 @@
+// app/layout.tsx
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
 import { SITE } from "@/site.config";
 import JsonLd from "@/components/JsonLd";
 
-const ogImage = "/opengraph-image.png"; // put a 1200×630 image here
+const ogImage = "/opengraph-image.png"; // 1200×630 image in /app or /public
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -28,7 +30,9 @@ export const metadata: Metadata = {
     "YouTube podcast",
   ],
   authors: [{ name: "David McDonald" }],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     url: SITE.url,
@@ -44,18 +48,17 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [ogImage],
   },
-robots: {
-  index: true,
-  follow: true,
-  googleBot: {
+  robots: {
     index: true,
     follow: true,
-    "max-video-preview": -1,
-    "max-image-preview": "large",
-    "max-snippet": -1,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-},
-
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
@@ -64,7 +67,7 @@ robots: {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Site-wide Organization + Website JSON-LD
+  // Site-wide JSON-LD
   const org = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -93,7 +96,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <Header />
-        <Analytics />
+
+        {/* Any client component that uses usePathname/useSearchParams must be inside Suspense */}
+        <Suspense fallback={null}>
+          <Analytics />
+          {/* If you also use a RouteAnalytics component, keep it inside Suspense too */}
+          {/* <RouteAnalytics /> */}
+        </Suspense>
 
         {/* Global JSON-LD */}
         <JsonLd json={org} />
