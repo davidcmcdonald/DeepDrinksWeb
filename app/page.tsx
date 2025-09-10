@@ -1,17 +1,48 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { SITE } from "@/site.config";
 import { fetchPlaylist } from "@/lib/playlist";
 import VideoCard from "@/components/VideoCard";
 import Subscribe from "@/components/Subscribe";
 import { fetchChannelPlaylists } from "@/lib/channel";
+import JsonLd from "@/components/JsonLd";
 import TrackLink from "@/components/TrackLink";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Deep conversations over deep drinks. Religion, philosophy, science & human rights — long-form chats with scholars, creators and everyday people.",
+  alternates: { canonical: "/" },
+};
 
 export default async function Home() {
   const vids = await fetchPlaylist(SITE.playlistId, { max: 9 });
   const playlists = await fetchChannelPlaylists(SITE.channelHandle, { limit: 6 });
 
+  // VideoObject JSON-LD for the 9 visible videos
+  const videoObjects = vids.map(v => ({
+    "@type": "VideoObject",
+    name: v.title,
+    description: v.description?.slice(0, 500) || v.title,
+    thumbnailUrl: v.thumbnail ? [v.thumbnail] : undefined,
+    uploadDate: v.published,
+    url: v.link,
+    embedUrl: `https://www.youtube.com/embed/${v.id}`,
+    publisher: { "@type": "Organization", name: "Deep Drinks Podcast", url: SITE.url },
+  }));
+
+  const homepageLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Deep Drinks Podcast — Recent Episodes",
+    url: SITE.url,
+    hasPart: videoObjects,
+  };
+
   return (
     <div className="space-y-10">
+      <JsonLd json={homepageLd} />
+
       <section className="card relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(60rem_20rem_at_50%_-20%,white,transparent)]" />
         <div className="relative">

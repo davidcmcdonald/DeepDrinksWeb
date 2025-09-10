@@ -1,13 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { SITE } from "@/site.config";
 import TrackLink from "@/components/TrackLink";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Deep Drinks Podcast and host David McDonald — exploring religion, philosophy, science, and human rights.",
+  alternates: { canonical: "/about" },
+};
 
 export default function About() {
+  const breadcrumbs = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "About", item: SITE.url + "/about" },
+    ],
+  };
+
   return (
     <div className="space-y-10">
+      <JsonLd json={breadcrumbs} />
+
       <section className="grid lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2 space-y-6">
           <h1 className="text-3xl font-extrabold">About Deep Drinks</h1>
