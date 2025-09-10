@@ -3,7 +3,7 @@ import { YouTubeIcon, SpotifyIcon, AppleIcon, LinktreeIcon } from "@/components/
 import { SITE } from "@/site.config";
 
 export default function Socials({ className = "" }: { className?: string }) {
-  const base = "h-5 w-5 fill-white/80 hover:fill-white transition";
+  const base = "h-6 w-6 text-white/70 hover:text-white transition";
   return (
     <div className={`flex items-center gap-4 ${className}`}>
       <Link href={SITE.socials.youtube} target="_blank" aria-label="YouTube"><YouTubeIcon className={base} /></Link>
