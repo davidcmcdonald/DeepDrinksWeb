@@ -16,7 +16,7 @@ export default function Header() {
             height={SITE.logoHeight}
             priority
             sizes="(max-width: 768px) 140px, 180px"
-            className="h-8 md:h-9 w-auto"   // ← adjust these to taste (h-8 ≈ 32px, h-9 ≈ 36px)
+            className="h-16 md:h-[72px] w-auto" // ← adjust these to taste (h-8 ≈ 32px, h-9 ≈ 36px)
           />
         </Link>
 
