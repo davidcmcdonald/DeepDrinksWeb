@@ -4,10 +4,14 @@ export const SITE = {
   url: "https://www.deepdrinks.com",
   youtubeChannel: "https://www.youtube.com/@DeepDrinks",
   subscribeUrl: "https://www.youtube.com/@DeepDrinks?sub_confirmation=1",
+
   // Primary playlist used for the homepage "Recent episodes"
   playlistId: process.env.NEXT_PUBLIC_PLAYLIST_ID || "PLLZG9iqwGS3M0_VyN7aGNEpsk9kWI7Zhg",
+
   // Your channel handle (for playlist discovery)
   channelHandle: process.env.NEXT_PUBLIC_YT_HANDLE || "DeepDrinks",
+
+  // Social + support links
   socials: {
     youtube: "https://www.youtube.com/@DeepDrinks",
     spotify: "https://open.spotify.com/show/4TjeHzFi4JqcHZ06zx4aHK",
@@ -16,6 +20,11 @@ export const SITE = {
     patreon: "https://patreon.com/deepdrinks",
     merch: "https://www.deepdrinksstore.com/",
     members: "https://www.youtube.com/@DeepDrinks/join",
-    email: "mailto:david@deepdrinks.com"
-  }
+    email: "mailto:david@deepdrinks.com",
+  },
+
+  // Header logo (PNG, intrinsic size)
+  logo: "/images/logo.png",
+  logoWidth: 720,
+  logoHeight: 371,
 };
