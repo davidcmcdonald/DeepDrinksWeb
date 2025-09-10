@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { SITE } from "@/site.config";
 import Link from "next/link";
+import { SITE } from "@/site.config";
+// 👇 add this import (path must match your file)
+import headshot from "@/public/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg";
 
-export const metadata = {
-  title: "About",
-};
+export const metadata = { title: "About" };
 
 export default function About() {
   return (
@@ -31,18 +31,17 @@ export default function About() {
       <div className="card text-center">
         <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-full border border-white/10">
           <Image
-            src="/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg"
-            alt="David McDonald"
+            src={headshot}
+            alt="David McDonald headshot"
             fill
             className="object-cover"
             sizes="192px"
+            placeholder="blur"
+            priority
           />
         </div>
         <h3 className="mt-4 text-xl font-semibold">David McDonald</h3>
         <p className="text-white/60 text-sm">Host & Producer</p>
-        <p className="text-white/70 text-sm mt-2">
-          (Image file lives at <code>public/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg</code>)
-        </p>
       </div>
     </div>
   );
