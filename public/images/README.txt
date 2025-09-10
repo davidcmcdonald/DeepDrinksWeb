@@ -1,1 +1,0 @@
-Drop a headshot as public/images/profile.jpg (JPG/PNG). 1200x1200 recommended.

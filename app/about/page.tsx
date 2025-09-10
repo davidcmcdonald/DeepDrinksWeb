@@ -42,7 +42,7 @@ export default function About() {
           Host & Producer
         </p>
         <p className="text-white/70 text-sm mt-2">
-          (Replace this photo by adding <code>public/images/profile.jpg</code>)
+          (Replace this photo by adding <code>public/images/David-Mcdonald-of-Deep-Drinks-Podcast_Profile.jpg</code>)
         </p>
       </div>
     </div>
